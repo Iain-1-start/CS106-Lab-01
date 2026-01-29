@@ -8,7 +8,8 @@
  */
 int tmax(void)
 {
-    return 2;
+    return ~(1 << 31);
+    // if (8 << 28) - 1 bit --> overflow, but bitwise, will still get tmax.
 }
 
 int test_tmax(void)

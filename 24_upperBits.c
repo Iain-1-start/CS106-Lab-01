@@ -10,7 +10,10 @@
  */
 int upperBits(int n)
 {
-    return 2;
+    return (1 << 31) >> (n + ~0) & ((!!n) <<31) >> 31;
+    // !! generates 1 bit of either 0 or 1
+    // if n != 0, !n = false and !!n = 1 (true)
+    // if n == 0, !n = true and !!n = 0 (false)
 }
 
 int test_upperBits(int x)
@@ -24,7 +27,7 @@ int test_upperBits(int x)
 
 int main(void)
 {
-    int x = 32;
+    int x = 0;
     printf("expected: %x\n", upperBits(x));
     printf("actual  : %x\n", test_upperBits(x));
 }

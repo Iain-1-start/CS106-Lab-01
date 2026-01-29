@@ -10,7 +10,9 @@
  */
 int bitMatch(int x, int y)
 {
-    return 2;
+    // return (~x & ~y) | (x & y);
+    // return ~(x^y);
+    return ~((x | y) & ~((x & y)));
 }
 
 int test_bitMatch(int x, int y)
@@ -27,8 +29,8 @@ int test_bitMatch(int x, int y)
 
 int main(void)
 {
-    int x = 0;
-    int y = 0;
+    int x = 0x7;
+    int y = 0xE;
     printf("expected: %x\n", bitMatch(x, y));
     printf("actual  : %x\n", test_bitMatch(x, y));
 }
